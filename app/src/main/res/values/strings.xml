@@ -3,4 +3,6 @@
     <string name="bottom_bar_home">Home</string>
     <string name="bottom_bar_create_event">Create Event</string>
     <string name="bottom_bar_profile">Profile</string>
+    <string name="scan_qr_code">Scan QR Code</string>
+    <string name="meeplematch">Meeplematch</string>
 </resources>
