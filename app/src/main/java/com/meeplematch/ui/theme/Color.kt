@@ -12,4 +12,5 @@ val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
 val White = Color("#ffffff".toColorInt())
+val PrimaryBackground = Color("#171717".toColorInt())
 val PrimaryAccentColor = Color("#dc3545".toColorInt())

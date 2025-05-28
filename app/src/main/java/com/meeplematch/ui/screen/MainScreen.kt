@@ -6,12 +6,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import com.meeplematch.ui.components.Home
 import com.meeplematch.ui.navigation.BottomBar
-import com.meeplematch.ui.splash.SplashScreen
 
 @Composable
-fun MainScreen(modifier: Modifier = Modifier) {
+fun MainScreen(modifier: Modifier = Modifier, navController: NavController) {
     Scaffold(
         bottomBar = { BottomBar(modifier = Modifier) }
     ) { innerPadding ->
@@ -20,8 +20,7 @@ fun MainScreen(modifier: Modifier = Modifier) {
                 .padding(innerPadding)
                 .fillMaxSize()
         ) {
-            HomeScreen(modifier = Modifier)
-            // SplashScreen(Modifier)
+            Home(navController = navController)
         }
     }
 }

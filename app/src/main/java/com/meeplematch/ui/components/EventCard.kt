@@ -42,7 +42,7 @@ fun EventCard(
             ) {
                 Text(
                     text = event.name,
-                    style = MaterialTheme.typography.titleLarge,
+                    style = MaterialTheme.typography.titleMedium,
                     color = PrimaryAccentColor,
                     fontWeight = FontWeight.Bold,
                     maxLines = 1,
