@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.meeplematch.R
-import com.meeplematch.domain.utils.MAIN_SCREEN
+import com.meeplematch.ui.navigation.route.Route
 
 @Composable
 fun LoginForm(navController: NavController) {
@@ -79,7 +79,7 @@ fun LoginForm(navController: NavController) {
 
         Button(
             modifier = Modifier.fillMaxWidth(),
-            onClick = { navController.navigate(MAIN_SCREEN) },
+            onClick = { navController.navigate(Route.MAIN_SCREEN) },
         ) {
             Text("Submit")
         }

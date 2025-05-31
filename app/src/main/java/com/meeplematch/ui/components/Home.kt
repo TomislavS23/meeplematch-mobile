@@ -11,12 +11,10 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import com.meeplematch.domain.utils.SPLASH_SCREEN
 import com.meeplematch.domain.utils.events
 
 @Composable
-fun Home(modifier: Modifier = Modifier, navController: NavController) {
+fun Home(modifier: Modifier = Modifier) {
     Column{
         Row (
             modifier = Modifier.fillMaxWidth(),
@@ -33,7 +31,7 @@ fun Home(modifier: Modifier = Modifier, navController: NavController) {
             items(events) { event ->
                 EventCard(
                     event = event,
-                    onClick = { navController.navigate(SPLASH_SCREEN) }
+                    onClick = { /* TODO: navigate to event details */ }
                 )
             }
         }
