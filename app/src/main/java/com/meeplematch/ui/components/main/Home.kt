@@ -1,4 +1,4 @@
-package com.meeplematch.ui.components
+package com.meeplematch.ui.components.main
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.meeplematch.domain.utils.events
+import com.meeplematch.ui.components.event.EventCard
 
 @Composable
 fun Home(modifier: Modifier = Modifier) {

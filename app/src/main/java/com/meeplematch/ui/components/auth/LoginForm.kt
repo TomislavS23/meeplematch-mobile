@@ -1,4 +1,4 @@
-package com.meeplematch.ui.components
+package com.meeplematch.ui.components.auth
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.meeplematch.R
-import com.meeplematch.ui.navigation.route.Route
+import com.meeplematch.ui.util.Route
 
 @Composable
 fun LoginForm(navController: NavController) {

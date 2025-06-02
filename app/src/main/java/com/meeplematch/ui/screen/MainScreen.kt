@@ -8,16 +8,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import com.meeplematch.ui.components.BottomBar
-import com.meeplematch.ui.navigation.route.Route
+import com.meeplematch.ui.components.main.BottomBar
+import com.meeplematch.ui.util.Route
 import com.meeplematch.ui.navigation.graph.mainScreenDestinations
+import com.meeplematch.ui.util.config.UIConfig
 
 @Composable
 fun MainScreen(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
 
     Scaffold(
-        bottomBar = { BottomBar(modifier = Modifier, navController = navController) }
+        bottomBar = {
+            BottomBar(
+                modifier = Modifier,
+                navController = navController,
+                navBarItems = UIConfig.navigationBarItems
+            )
+        }
     ) { innerPadding ->
         Box(
             modifier = Modifier

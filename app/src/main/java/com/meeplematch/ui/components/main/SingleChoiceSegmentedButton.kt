@@ -1,4 +1,4 @@
-package com.meeplematch.ui.components
+package com.meeplematch.ui.components.main
 
 import androidx.compose.material3.SegmentedButton
 import androidx.compose.material3.SegmentedButtonDefaults

@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.meeplematch.ui.navigation.graph.appStartDestinations
-import com.meeplematch.ui.navigation.route.Route
+import com.meeplematch.ui.util.Route
 
 @Composable
 fun ApplicationStart() {
