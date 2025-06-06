@@ -1,4 +1,4 @@
-package com.meeplematch.domain.model
+package com.meeplematch.data.model
 
 import java.time.LocalDateTime
 

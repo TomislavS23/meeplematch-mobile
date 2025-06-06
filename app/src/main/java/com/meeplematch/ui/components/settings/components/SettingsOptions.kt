@@ -9,7 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.meeplematch.domain.model.composable.SettingsOption
+import com.meeplematch.data.model.composable.SettingsButtonType
+import com.meeplematch.data.model.composable.SettingsOption
 
 @Composable
 fun SettingsOptions(
@@ -23,13 +24,28 @@ fun SettingsOptions(
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
         settingsOptions.forEach { option ->
-            SettingsButton(
-                modifier = Modifier
-                    .clickable(onClick = { navController.navigate(option.navigationRoute) })
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                option = option,
-            )
+            when (option.buttonType) {
+                SettingsButtonType.NAVIGATION -> {
+                    SettingsButtonNavigation(
+                        modifier = Modifier
+                            .clickable(onClick = { navController.navigate(option.navigationRoute) })
+                            .fillMaxWidth()
+                            .padding(16.dp),
+                        option = option,
+                    )
+                }
+
+                SettingsButtonType.SWITCH -> {
+                    SettingsButtonSwitch(
+                        modifier = Modifier
+                            .clickable(onClick = {  })
+                            .fillMaxWidth()
+                            .padding(16.dp),
+                        option = option
+                    )
+                }
+                SettingsButtonType.DIALOG -> TODO()
+            }
         }
     }
 }

@@ -11,7 +11,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.meeplematch.domain.utils.events
+import com.meeplematch.data.utils.events
 import com.meeplematch.ui.components.event.EventCard
 
 @Composable

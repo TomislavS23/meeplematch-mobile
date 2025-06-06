@@ -6,12 +6,12 @@ import androidx.navigation.compose.composable
 import com.meeplematch.ui.components.main.Home
 import com.meeplematch.ui.components.settings.general.About
 import com.meeplematch.ui.components.settings.general.AccountSecurity
-import com.meeplematch.ui.util.Route
+import com.meeplematch.ui.components.settings.general.SettingsMain
 import com.meeplematch.ui.screen.LoginScreen
 import com.meeplematch.ui.screen.MainScreen
-import com.meeplematch.ui.components.settings.general.SettingsMain
 import com.meeplematch.ui.screen.SettingsScreen
 import com.meeplematch.ui.screen.SplashScreen
+import com.meeplematch.ui.util.Route
 
 fun NavGraphBuilder.appStartDestinations(navController: NavController) {
     composable(Route.LOGIN_SCREEN) { LoginScreen(navController = navController) }

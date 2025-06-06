@@ -7,16 +7,26 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.meeplematch.domain.model.composable.SettingsOption
+import com.meeplematch.data.model.composable.SettingsOption
 
 @Composable
-fun SettingsButton(modifier: Modifier = Modifier, option: SettingsOption) {
+fun SettingsButtonSwitch(
+    modifier: Modifier = Modifier,
+    option: SettingsOption
+) {
+    var checked by rememberSaveable { mutableStateOf(false) }
+
     Row(
         modifier = modifier,
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -39,10 +49,11 @@ fun SettingsButton(modifier: Modifier = Modifier, option: SettingsOption) {
             }
         }
 
-        Icon(
-            modifier = Modifier.size(16.dp),
-            imageVector = option.actionIcon,
-            contentDescription = null
+        Switch(
+            checked = checked,
+            onCheckedChange = {
+                checked = it
+            }
         )
     }
 

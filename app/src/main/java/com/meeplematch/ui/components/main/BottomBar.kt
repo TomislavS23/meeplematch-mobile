@@ -6,10 +6,9 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
-import com.meeplematch.domain.model.composable.NavigationBarItem
+import com.meeplematch.data.model.composable.NavigationBarItem
 import com.meeplematch.ui.theme.PrimaryAccentColor
 
 @Composable

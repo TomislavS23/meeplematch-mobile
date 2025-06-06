@@ -11,7 +11,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.meeplematch.domain.model.composable.SettingsSection
+import com.meeplematch.data.model.composable.SettingsSection
 
 @Composable
 fun SettingsSection(

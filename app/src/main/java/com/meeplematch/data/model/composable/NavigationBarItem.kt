@@ -1,4 +1,4 @@
-package com.meeplematch.domain.model.composable
+package com.meeplematch.data.model.composable
 
 import androidx.compose.ui.graphics.vector.ImageVector
 
