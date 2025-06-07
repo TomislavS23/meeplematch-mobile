@@ -5,9 +5,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import com.meeplematch.data.factory.EventViewModelFactory
+import com.meeplematch.data.model.viewmodel.EventViewModel
 import com.meeplematch.ui.components.main.BottomBar
 import com.meeplematch.ui.util.Route
 import com.meeplematch.ui.navigation.graph.mainScreenDestinations
@@ -16,6 +21,7 @@ import com.meeplematch.ui.util.config.UIConfig
 @Composable
 fun MainScreen(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
+    val viewModel: EventViewModel = viewModel(factory = EventViewModelFactory(1))
 
     Scaffold(
         bottomBar = {
@@ -32,7 +38,7 @@ fun MainScreen(modifier: Modifier = Modifier) {
                 .fillMaxSize()
         ) {
             NavHost(navController = navController, startDestination = Route.HOME_SCREEN) {
-                mainScreenDestinations(navController)
+                mainScreenDestinations(navController, viewModel)
             }
         }
     }

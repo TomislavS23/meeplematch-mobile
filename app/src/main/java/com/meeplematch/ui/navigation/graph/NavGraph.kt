@@ -3,6 +3,8 @@ package com.meeplematch.ui.navigation.graph
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
+import com.meeplematch.data.model.viewmodel.EventViewModel
+import com.meeplematch.ui.components.event.SubscribedEvents
 import com.meeplematch.ui.components.main.Home
 import com.meeplematch.ui.components.settings.general.About
 import com.meeplematch.ui.components.settings.general.AccountSecurity
@@ -20,10 +22,14 @@ fun NavGraphBuilder.appStartDestinations(navController: NavController) {
 }
 
 
-fun NavGraphBuilder.mainScreenDestinations(navController: NavController) {
-    composable(Route.HOME_SCREEN) { Home() }
+fun NavGraphBuilder.mainScreenDestinations(
+    navController: NavController,
+    eventViewModel: EventViewModel
+) {
+    composable(Route.HOME_SCREEN) { Home(eventViewModel, navController) }
     composable(Route.SETTINGS_SCREEN) { SettingsScreen(navController) }
-    composable(Route.SUBSCRIBED) { /* TODO */ }
+    composable(Route.SUBSCRIBED) { SubscribedEvents(eventViewModel, navController) }
+    composable(Route.EVENT_DETAILS_SCREEN) { /* TODO */ }
 }
 
 fun NavGraphBuilder.settingsDestinations(navController: NavController) {

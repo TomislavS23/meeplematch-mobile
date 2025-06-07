@@ -1,4 +1,4 @@
-package com.meeplematch.ui.components.main
+package com.meeplematch.ui.components.event
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,25 +11,23 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.meeplematch.data.model.viewmodel.EventViewModel
-import com.meeplematch.ui.components.event.EventCard
+import com.meeplematch.ui.components.main.SingleChoiceSegmentedButton
 
 @Composable
-fun Home(viewModel: EventViewModel, navController: NavController) {
+fun SubscribedEvents(viewModel: EventViewModel, navController: NavController) {
     val events by viewModel.events.collectAsState()
+    val subscribedEvents by viewModel.subscribedEvents.collectAsState()
 
     Column {
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.Center
         ) {
-            SingleChoiceSegmentedButton(navController =  navController, index = 0)
+            SingleChoiceSegmentedButton(navController =  navController, index = 1)
         }
 
         LazyColumn(
@@ -38,10 +36,12 @@ fun Home(viewModel: EventViewModel, navController: NavController) {
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             items(events) { event ->
-                EventCard(
-                    event = event,
-                    onClick = { /* TODO: navigate to event details */ }
-                )
+                if (subscribedEvents.find { ep -> ep.idEvent == event.idEvent } != null) {
+                    EventCard(
+                        event = event,
+                        onClick = { /* TODO: navigate to event details */ }
+                    )
+                }
             }
         }
     }

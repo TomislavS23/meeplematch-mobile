@@ -1,16 +1,17 @@
 package com.meeplematch.data.model
 
-import java.time.LocalDateTime
+import com.google.gson.annotations.SerializedName
 
 data class Event(
-    val id: Int,
-    val uuid: String?,
+    val idEvent: Int,
     val name: String,
     val type: String,
     val game: String,
     val location: String,
-    val eventDate: LocalDateTime,
+    val eventDate: String,
     val capacity: Int?,
     val minParticipants: Int?,
-    val description: String?,
+    val description: String?
 )
+
+

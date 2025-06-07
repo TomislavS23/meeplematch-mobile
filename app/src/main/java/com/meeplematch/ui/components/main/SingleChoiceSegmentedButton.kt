@@ -10,12 +10,14 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
 import com.meeplematch.ui.theme.PrimaryAccentColor
 import com.meeplematch.ui.theme.White
+import com.meeplematch.ui.util.Route
 
 @Composable
-fun SingleChoiceSegmentedButton(modifier: Modifier = Modifier) {
-    var selectedIndex by remember { mutableIntStateOf(0) }
+fun SingleChoiceSegmentedButton(modifier: Modifier = Modifier, navController: NavController, index: Int) {
+    var selectedIndex by remember { mutableIntStateOf(index) }
     val options = listOf("Events", "Subscribed")
 
     SingleChoiceSegmentedButtonRow(
@@ -35,7 +37,11 @@ fun SingleChoiceSegmentedButton(modifier: Modifier = Modifier) {
                 onClick = {
                     selectedIndex = index
 
-                    // TODO: depending on selected index show either event or subscribed screen
+                    if (index == 1) {
+                        navController.navigate(Route.SUBSCRIBED)
+                    } else {
+                        navController.navigate(Route.HOME_SCREEN)
+                    }
                 },
                 selected = index == selectedIndex,
                 label = { Text(label) }
