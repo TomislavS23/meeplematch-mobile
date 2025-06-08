@@ -1,7 +1,5 @@
 package com.meeplematch.data.model
 
-import com.google.gson.annotations.SerializedName
-
 data class Event(
     val idEvent: Int,
     val name: String,

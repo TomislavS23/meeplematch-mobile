@@ -16,6 +16,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.meeplematch.data.model.Event
+import com.meeplematch.data.util.getDateTime
 import com.meeplematch.ui.theme.PrimaryAccentColor
 import java.time.format.DateTimeFormatter
 
@@ -64,10 +65,8 @@ fun EventCard(
                 style = MaterialTheme.typography.bodyMedium
             )
 
-            val formattedDate = event
-                .eventDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy - hh:mm:ss"))
             Text(
-                text = formattedDate,
+                text = getDateTime(event.eventDate),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(top = 24.dp)
