@@ -4,7 +4,7 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 
-fun getDateTime(s: String): String {
+fun getTimestampFromString(s: String): String {
     return try {
         val inputFormatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME
         val dateTime = LocalDateTime.parse(s, inputFormatter)
@@ -14,5 +14,9 @@ fun getDateTime(s: String): String {
     } catch (e: Exception) {
         e.toString()
     }
+}
+
+fun getStringFromTimestamp(date: LocalDateTime): String {
+    return date.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME).toString()
 }
 

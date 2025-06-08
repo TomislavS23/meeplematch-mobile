@@ -11,13 +11,10 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.meeplematch.data.model.viewmodel.EventViewModel
+import com.meeplematch.data.viewmodel.EventViewModel
 import com.meeplematch.ui.components.event.EventCard
 
 @Composable
@@ -29,7 +26,7 @@ fun Home(viewModel: EventViewModel, navController: NavController) {
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.Center
         ) {
-            SingleChoiceSegmentedButton(navController =  navController, index = 0)
+            SingleChoiceSegmentedButton(navController = navController, index = 0)
         }
 
         LazyColumn(
@@ -40,7 +37,9 @@ fun Home(viewModel: EventViewModel, navController: NavController) {
             items(events) { event ->
                 EventCard(
                     event = event,
-                    onClick = { /* TODO: navigate to event details */ }
+                    onClick = {
+                        navController.navigate("event/${event.idEvent}")
+                    }
                 )
             }
         }

@@ -22,5 +22,4 @@ object Route {
 
     // Dynamic
     const val EVENT_DETAILS_SCREEN = "event/{id}"
-    fun eventDetails(id: String) = "event/$id"
 }

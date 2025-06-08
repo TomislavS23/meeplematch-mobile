@@ -1,10 +1,14 @@
 package com.meeplematch.ui.navigation.graph
 
+import androidx.compose.material3.Text
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavType
 import androidx.navigation.compose.composable
-import com.meeplematch.data.model.viewmodel.EventViewModel
-import com.meeplematch.ui.components.event.SubscribedEvents
+import androidx.navigation.navArgument
+import com.meeplematch.data.viewmodel.EventViewModel
+import com.meeplematch.ui.components.event.EventDetails
+import com.meeplematch.ui.components.main.SubscribedEvents
 import com.meeplematch.ui.components.main.Home
 import com.meeplematch.ui.components.settings.general.About
 import com.meeplematch.ui.components.settings.general.AccountSecurity
@@ -29,7 +33,19 @@ fun NavGraphBuilder.mainScreenDestinations(
     composable(Route.HOME_SCREEN) { Home(eventViewModel, navController) }
     composable(Route.SETTINGS_SCREEN) { SettingsScreen(navController) }
     composable(Route.SUBSCRIBED) { SubscribedEvents(eventViewModel, navController) }
-    composable(Route.EVENT_DETAILS_SCREEN) { /* TODO */ }
+    composable(
+        route = Route.EVENT_DETAILS_SCREEN,
+        arguments = listOf(navArgument("id") { type = NavType.IntType })
+    ) { entry ->
+        val eventId = entry.arguments?.getInt("id")
+        val event = eventId?.let { eventViewModel.getEventById(it) }
+
+        if (event != null) {
+            EventDetails(event = event, eventViewModel = eventViewModel)
+        } else {
+            Text("Event not found")
+        }
+    }
 }
 
 fun NavGraphBuilder.settingsDestinations(navController: NavController) {
