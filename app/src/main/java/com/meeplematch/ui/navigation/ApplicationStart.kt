@@ -6,7 +6,7 @@ import androidx.compose.runtime.getValue
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import com.meeplematch.data.factory.EventViewModelFactory
+import com.meeplematch.data.viewmodel.factory.EventViewModelFactory
 import com.meeplematch.data.viewmodel.EventViewModel
 import com.meeplematch.ui.navigation.graph.appStartDestinations
 import com.meeplematch.ui.util.Route

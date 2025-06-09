@@ -13,10 +13,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -25,17 +27,24 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.meeplematch.R
+import com.meeplematch.data.datastore.ID_USER
+import com.meeplematch.data.datastore.userStore
+import com.meeplematch.data.datastore.writeIntoDataStore
+import com.meeplematch.ui.theme.INTER
 import com.meeplematch.ui.util.Route
+import kotlinx.coroutines.launch
 
 @Composable
 fun LoginForm(navController: NavController) {
     var usernameFieldValue by rememberSaveable { mutableStateOf("") }
     var passwordFieldValue by rememberSaveable { mutableStateOf("") }
+    val scope = rememberCoroutineScope()
+    val context = LocalContext.current
 
-    Column (
+    Column(
         modifier = Modifier.width(350.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-    ){
+    ) {
         Image(
             modifier = Modifier.padding(top = 64.dp),
             painter = painterResource(R.drawable.app_logo_general),
@@ -47,7 +56,8 @@ fun LoginForm(navController: NavController) {
         Text(
             text = stringResource(R.string.meeplematch),
             fontSize = 32.sp,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            fontFamily = INTER
         )
 
         Spacer(modifier = Modifier.height(60.dp))
@@ -79,9 +89,18 @@ fun LoginForm(navController: NavController) {
 
         Button(
             modifier = Modifier.fillMaxWidth(),
-            onClick = { navController.navigate(Route.MAIN_SCREEN) },
+            onClick = {
+                scope.launch {
+                    writeIntoDataStore(context.userStore, ID_USER, "1") // TODO: read from somewhere
+                    navController.navigate(Route.MAIN_SCREEN)
+                }
+            },
         ) {
-            Text("Submit")
+            Text(
+                text = "Submit",
+                fontFamily = INTER,
+                fontWeight = FontWeight.SemiBold
+            )
         }
     }
 }

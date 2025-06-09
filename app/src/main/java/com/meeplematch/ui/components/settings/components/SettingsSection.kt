@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -12,6 +13,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.meeplematch.data.model.composable.SettingsSection
+import com.meeplematch.ui.theme.INTER
 
 @Composable
 fun SettingsSection(
@@ -29,6 +31,8 @@ fun SettingsSection(
                         text = section.sectionTitle,
                         fontWeight = FontWeight.Bold,
                         fontSize = 16.sp,
+                        fontFamily = INTER,
+                        color = MaterialTheme.colorScheme.onBackground
                     )
                 }
 

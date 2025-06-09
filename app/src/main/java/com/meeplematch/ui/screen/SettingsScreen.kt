@@ -25,7 +25,7 @@ fun SettingsScreen(navController: NavController) {
             TopBar(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(MaterialTheme.colorScheme.inverseOnSurface),
+                    .background(MaterialTheme.colorScheme.surface),
                 navController = navController
             )
         }

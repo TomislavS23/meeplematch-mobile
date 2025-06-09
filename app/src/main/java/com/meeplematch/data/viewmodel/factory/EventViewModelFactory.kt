@@ -1,4 +1,4 @@
-package com.meeplematch.data.factory
+package com.meeplematch.data.viewmodel.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

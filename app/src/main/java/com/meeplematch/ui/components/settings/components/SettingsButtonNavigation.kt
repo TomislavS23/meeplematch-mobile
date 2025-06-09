@@ -7,13 +7,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.meeplematch.data.model.composable.SettingsOption
+import com.meeplematch.ui.theme.INTER
 
 @Composable
 fun SettingsButtonNavigation(modifier: Modifier, option: SettingsOption) {
@@ -29,12 +32,16 @@ fun SettingsButtonNavigation(modifier: Modifier, option: SettingsOption) {
                 Icon(
                     modifier = Modifier.size(24.dp),
                     imageVector = option.optionIcon,
-                    contentDescription = null
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
                     modifier = Modifier.padding(start = 16.dp),
                     text = option.optionTitle,
                     fontSize = 16.sp,
+                    fontFamily = INTER,
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.onSurface
                 )
             }
         }
@@ -42,7 +49,8 @@ fun SettingsButtonNavigation(modifier: Modifier, option: SettingsOption) {
         Icon(
             modifier = Modifier.size(16.dp),
             imageVector = option.actionIcon,
-            contentDescription = null
+            contentDescription = null,
+            tint = MaterialTheme.colorScheme.onSurface
         )
     }
 

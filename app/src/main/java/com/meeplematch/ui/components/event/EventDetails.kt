@@ -24,7 +24,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
 import androidx.work.Data
 import androidx.work.OneTimeWorkRequest
@@ -33,7 +35,7 @@ import androidx.work.WorkManager
 import com.meeplematch.data.model.Event
 import com.meeplematch.data.viewmodel.EventViewModel
 import com.meeplematch.data.worker.EventReminderWorker
-import com.meeplematch.ui.theme.PrimaryAccentColor
+import com.meeplematch.ui.theme.INTER
 import java.util.concurrent.TimeUnit
 
 @SuppressLint("MissingPermission")
@@ -71,27 +73,50 @@ fun EventDetails(
             .padding(16.dp)
     ) {
         Text(
-            color = PrimaryAccentColor,
+            color = MaterialTheme.colorScheme.primary,
             text = event.name,
-            style = MaterialTheme.typography.headlineMedium
+            fontFamily = INTER,
+            fontWeight = FontWeight.Bold,
+            fontSize = 24.sp
         )
 
-        Spacer(Modifier.height(8.dp))
+        Spacer(Modifier.height(24.dp))
 
-        Text("Type: ${event.type}")
-        Text("Game: ${event.game}")
-        Text("Location: ${event.location}")
-        Text("Date: ${event.eventDate}")
+        Text(
+            text = "Type: ${event.type}",
+            fontFamily = INTER
+        )
+        Text(
+            "Game: ${event.game}",
+            fontFamily = INTER
+        )
+        Text(
+            "Location: ${event.location}",
+            fontFamily = INTER
+        )
+        Text(
+            "Date: ${event.eventDate}",
+            fontFamily = INTER
+        )
 
         event.capacity?.let {
-            Text("Capacity: $it")
+            Text(
+                text = "Capacity: $it",
+                fontFamily = INTER
+            )
         }
         event.minParticipants?.let {
-            Text("Minimum Participants: $it")
+            Text(
+                text = "Minimum Participants: $it",
+                fontFamily = INTER
+            )
         }
         event.description?.let {
             Spacer(Modifier.height(8.dp))
-            Text("Description: $it")
+            Text(
+                text = "Description: $it",
+                fontFamily = INTER
+            )
         }
 
         Spacer(Modifier.height(24.dp))
@@ -132,9 +157,13 @@ fun EventDetails(
                     }
                 }
             },
-            modifier = Modifier.align(Alignment.CenterHorizontally)
+            modifier = Modifier.align(Alignment.CenterHorizontally),
         ) {
-            Text(if (isSubscribed) "Unsubscribe" else "Subscribe")
+            Text(
+                text = if (isSubscribed) "Unsubscribe" else "Subscribe",
+                fontFamily = INTER,
+                fontWeight = FontWeight.SemiBold
+            )
         }
     }
 }
