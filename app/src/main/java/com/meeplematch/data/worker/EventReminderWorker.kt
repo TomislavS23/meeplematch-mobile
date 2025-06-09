@@ -21,7 +21,7 @@ class EventReminderWorker(
         val context = applicationContext
 
         val notificationBuilder = NotificationCompat.Builder(context, "event_channel")
-            .setSmallIcon(R.drawable.letter_m)
+            .setSmallIcon(R.drawable.ic_notification)
             .setContentTitle("Event Reminder")
             .setContentText("You got an event coming: $name at $date")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)

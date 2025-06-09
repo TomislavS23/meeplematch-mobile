@@ -44,9 +44,9 @@ fun EventDetails(
 ) {
     val subscribed = eventViewModel.isSubscribed(event.idEvent)
     var isSubscribed by rememberSaveable { mutableStateOf(subscribed) }
+
     val context = LocalContext.current
     val pendingWorkRequest = remember { mutableStateOf<OneTimeWorkRequest?>(null) }
-
     val permissionLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.RequestPermission(),
         onResult = { isGranted ->
@@ -56,7 +56,11 @@ fun EventDetails(
                     pendingWorkRequest.value = null
                 }
             } else {
-                Toast.makeText(context, "Notification permission denied", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    context,
+                    "Notification permission denied, please enable notification permission in the settings.",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     )
@@ -112,7 +116,10 @@ fun EventDetails(
                         .build()
 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                        if (ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS)
+                        if (ContextCompat.checkSelfPermission(
+                                context,
+                                Manifest.permission.POST_NOTIFICATIONS
+                            )
                             == PackageManager.PERMISSION_GRANTED
                         ) {
                             WorkManager.getInstance(context).enqueue(workRequest)
