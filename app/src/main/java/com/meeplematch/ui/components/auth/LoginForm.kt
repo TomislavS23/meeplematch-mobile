@@ -95,16 +95,16 @@ fun LoginForm(navController: NavController) {
             modifier = Modifier.fillMaxWidth(),
             onClick = {
                 scope.launch {
-                    val result = RetrofitClient
-                        .authApi
-                        .login(usernameFieldValue, passwordFieldValue)
+                    try {
+                        val result = RetrofitClient
+                            .authApi
+                            .login(usernameFieldValue, passwordFieldValue)
 
-                    if (result.isNullOrBlank()) {
-                        wrongCredentials = true
-                    } else {
                         val user = RetrofitClient.userApi.getPublicUser(usernameFieldValue)
                         writeIntoDataStore(context.userStore, ID_USER, user.idUser.toString())
                         navController.navigate(Route.MAIN_SCREEN)
+                    } catch (e: Exception) {
+                        wrongCredentials = true
                     }
                 }
             },
