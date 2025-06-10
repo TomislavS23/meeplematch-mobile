@@ -2,6 +2,7 @@
 accompanistSystemuicontroller = "<latest_version>"
 agp = "8.10.1"
 converterGson = "2.9.0"
+converterScalars = "2.9.0"
 datastorePreferences = "1.1.7"
 kotlin = "2.0.21"
 coreKtx = "1.15.0"
@@ -40,6 +41,7 @@ androidx-navigation-testing = { module = "androidx.navigation:navigation-testing
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationUiKtx" }
 androidx-navigation-ui-ktx-ktx = { module = "androidx.navigation:navigation-ui-ktx-ktx", version.ref = "navigationUiKtxKtx" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
+converter-scalars = { module = "com.squareup.retrofit2:converter-scalars", version.ref = "converterScalars" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }

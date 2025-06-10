@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.meeplematch.R
+import com.meeplematch.data.client.RetrofitClient
 import com.meeplematch.data.datastore.ID_USER
 import com.meeplematch.data.datastore.userStore
 import com.meeplematch.data.datastore.writeIntoDataStore
@@ -38,6 +39,7 @@ import kotlinx.coroutines.launch
 fun LoginForm(navController: NavController) {
     var usernameFieldValue by rememberSaveable { mutableStateOf("") }
     var passwordFieldValue by rememberSaveable { mutableStateOf("") }
+    var wrongCredentials by rememberSaveable { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
 
@@ -70,6 +72,7 @@ fun LoginForm(navController: NavController) {
             },
             singleLine = true,
             label = { Text(stringResource(R.string.username)) },
+            isError = wrongCredentials
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -82,7 +85,8 @@ fun LoginForm(navController: NavController) {
             },
             singleLine = true,
             label = { Text(stringResource(R.string.password)) },
-            visualTransformation = PasswordVisualTransformation()
+            visualTransformation = PasswordVisualTransformation(),
+            isError = wrongCredentials
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -91,8 +95,17 @@ fun LoginForm(navController: NavController) {
             modifier = Modifier.fillMaxWidth(),
             onClick = {
                 scope.launch {
-                    writeIntoDataStore(context.userStore, ID_USER, "1") // TODO: read from somewhere
-                    navController.navigate(Route.MAIN_SCREEN)
+                    val result = RetrofitClient
+                        .authApi
+                        .login(usernameFieldValue, passwordFieldValue)
+
+                    if (result.isNullOrBlank()) {
+                        wrongCredentials = true
+                    } else {
+                        val user = RetrofitClient.userApi.getPublicUser(usernameFieldValue)
+                        writeIntoDataStore(context.userStore, ID_USER, user.idUser.toString())
+                        navController.navigate(Route.MAIN_SCREEN)
+                    }
                 }
             },
         ) {
