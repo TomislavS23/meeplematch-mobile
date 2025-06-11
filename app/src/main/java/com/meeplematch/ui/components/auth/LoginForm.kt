@@ -96,10 +96,8 @@ fun LoginForm(navController: NavController) {
             onClick = {
                 scope.launch {
                     try {
-                        val result = RetrofitClient
-                            .authApi
+                        RetrofitClient.authApi
                             .login(usernameFieldValue, passwordFieldValue)
-
                         val user = RetrofitClient.userApi.getPublicUser(usernameFieldValue)
                         writeIntoDataStore(context.userStore, ID_USER, user.idUser.toString())
                         navController.navigate(Route.MAIN_SCREEN)
